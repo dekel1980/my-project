@@ -1,5 +1,5 @@
 # my-project- FinalProjectTest -
-First thing I did, I added the relevant dependencies at pom.xml.
+First thing I did, I added the relevant dependencies from selienium at pom.xml.
 I created new Maven Project with Helper class and a few methods.
 The First method is defines the ChromeDriver. 
 The Second method i opened the T-Plan website browser. 
