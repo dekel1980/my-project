@@ -1,0 +1,8 @@
+# my-project- FinalProjectTest -
+First thing I did, I added the relevant dependencies at pom.xml.
+I created new Maven Project with Helper class and a few methods.
+The First method is defines the ChromeDriver. 
+The Second method i opened the T-Plan website browser. 
+The Third method I opened the T-Plan browser and than i minimized the window and maximized the screen.
+In the next method I searched for the elements and used them in the relevant fields on the site.
+In the next method I used the elements in the relevant fields and I took a screenshots. 
