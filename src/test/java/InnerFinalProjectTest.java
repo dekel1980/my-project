@@ -2,8 +2,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.decorators.WebDriverDecorator;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -11,31 +11,28 @@ import java.io.IOException;
 
 public class InnerFinalProjectTest {
 
-    @BeforeClass
-    public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+    private WebDriver driver;
 
+    @BeforeTest
+    public void init(){
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
+
+    @AfterTest
+    public void destroy() {
+        driver.quit();
     }
 
     @Test
-    public void testOne(){
-        WebDriver driver = new ChromeDriver();
-
+    public void testOne() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.get(Helper.TPLANURL);
+        Thread.sleep(2000);
     }
 
     @Test
     public void testTwo() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        Thread.sleep(2000);
-        driver.get(Helper.TPLANURL);
-        Thread.sleep(2000);
-        driver.quit();
-
-    }
-
-    @Test
-    public void testThree() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
         Thread.sleep(2000);
         driver.get(Helper.TPLANURL);
         Thread.sleep(2000);
@@ -45,12 +42,10 @@ public class InnerFinalProjectTest {
         Thread.sleep(2000);
         driver.manage().window().minimize();
         Thread.sleep(2000);
-        driver.quit();
     }
 
     @Test
-    public void testFour() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+    public void testThree() throws InterruptedException {
         Thread.sleep(2000);
         driver.get(Helper.TPLANURL);
         Thread.sleep(2000);
@@ -68,13 +63,10 @@ public class InnerFinalProjectTest {
         Thread.sleep(2000);
         phoneNumberField.sendKeys(Helper.PHONENUMBER);
         Thread.sleep(2000);
-        driver.quit();
-
     }
 
     @Test
-    public void testFive() throws IOException, InterruptedException {
-        WebDriver driver = new ChromeDriver();
+    public void testFour() throws IOException, InterruptedException {
         driver.get(Helper.TPLANURL);
 
         WebElement fullNameField = driver.findElement(By.id(Helper.FULLNAMEID));
@@ -95,14 +87,10 @@ public class InnerFinalProjectTest {
 
         File file2 =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file2, new File(Helper.TIKIAHADASHA + "Screenshot2" + Helper.JPG));
-
-        driver.quit();
-
     }
 
     @Test
-    public void testSix() throws InterruptedException, IOException {
-        WebDriver driver = new ChromeDriver();
+    public void testFive() throws InterruptedException, IOException {
         driver.get(Helper.TPLANURL);
 
         for (int i = 0; i <Helper.FULLNAMES.length ; i++) {
@@ -122,10 +110,6 @@ public class InnerFinalProjectTest {
             File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(file, new File(Helper.TIKIAHADASHA + "screenshot" + i + Helper.JPG));
             driver.navigate().to(Helper.TPLANURL);
-
-
-
-
         }
     }
 }
